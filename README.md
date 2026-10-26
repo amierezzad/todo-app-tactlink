@@ -110,7 +110,7 @@ offline editing that syncs later, and tests.
 
 ## Time taken
 
-About **3 hours** in total.
+About **3.5 hours** in total.
 
 ## Use of AI
 
