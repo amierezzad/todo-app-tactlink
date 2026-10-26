@@ -13,6 +13,13 @@ import { validateEmail } from '@/lib/validation';
 
 type Errors = { email?: string; password?: string; form?: string };
 
+// e.g. "26 October 2026"
+const today = new Date().toLocaleDateString('en-GB', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+
 export default function LoginScreen() {
   const { signIn, notice } = useAuth();
   const passwordRef = useRef<TextInputInstance>(null);
@@ -55,9 +62,24 @@ export default function LoginScreen() {
               </AppText>
             </Link>
           </View>
+          <View className="mt-8 border-t border-grey-200 pt-4">
+            <AppText className="text-center text-xs text-grey-500">
+              Developed by Amier Ezzad · {today}
+            </AppText>
+          </View>
         </>
       }
     >
+      <View className="-mt-4 mb-8 border-t border-grey-200 pt-4">
+        <AppText className="text-sm leading-5 text-grey-500">
+          Built as part of my application for the{' '}
+          <AppText weight="medium" className="text-sm text-black">
+            Junior Mobile Developer
+          </AppText>{' '}
+          role at Tactlink.
+        </AppText>
+      </View>
+
       {notice && !errors.form ? (
         <View className="mb-5">
           <FormError message={notice} />

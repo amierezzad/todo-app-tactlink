@@ -11,6 +11,13 @@ import { validateEmail } from '../lib/validation'
 
 type Errors = { email?: string; password?: string; form?: string }
 
+// e.g. "26 October 2026"
+const today = new Date().toLocaleDateString('en-GB', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+})
+
 export function LoginPage() {
   const { signIn, notice } = useAuth()
   const [email, setEmail] = useState('')
@@ -52,9 +59,17 @@ export function LoginPage() {
               Sign up
             </Link>
           </p>
+          <p className="mt-8 border-t border-grey-200 pt-4 text-center text-xs text-grey-500">
+            Developed by Amier Ezzad · {today}
+          </p>
         </>
       }
     >
+      <p className="-mt-4 mb-8 border-t border-grey-200 pt-4 text-sm leading-5 text-grey-500">
+        Built as part of my application for the{' '}
+        <span className="font-medium text-black">Junior Mobile Developer</span> role at Tactlink.
+      </p>
+
       {notice && !errors.form ? <FormError message={notice} /> : null}
 
       <TextField
